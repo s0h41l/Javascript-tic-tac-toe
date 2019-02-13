@@ -10,11 +10,13 @@ var Data=function(){
     winCheck(){
         if((board[0]=="X" && board[1]=="X" && board[2]=="X") || (board[0]=="X" && board[3]=="X" && board[6]=="X") || (board[2]=="X" && board[5]=="X" && board[8]=="X") || (board[6]=="X" && board[7]=="X" && board[8]=="X") || (board[0]=="X" && board[4]=="X" && board[8]=="X") || (board[2]=="X" && board[4]=="X" && board[6]=="X") || (board[1]=="X" && board[4]=="X" && board[7]=="X") || (board[3]=="X" && board[4]=="X" && board[5]=="X")){
             alert("Player 0 win!");
+            document.querySelector("#winner").innerHTML="Player "+this.player+" Won";
             this.restart();
         }
 
         if((board[0]=="O" && board[1]=="O" && board[2]=="O") || (board[0]=="O" && board[3]=="O" && board[6]=="O") || (board[2]=="O" && board[5]=="O" && board[8]=="O") || (board[6]=="O" && board[7]=="O" && board[8]=="O") || (board[0]=="O" && board[4]=="O" && board[8]=="O") || (board[2]=="O" && board[4]=="O" && board[6]=="O") || (board[1]=="O" && board[4]=="O" && board[7]=="O") || (board[3]=="O" && board[4]=="O" && board[5]=="O")){
             alert("Player 1 win!");
+            document.querySelector("#winner").innerHTML="Player "+this.player+" Won";
             this.restart();
         }
 
@@ -43,6 +45,7 @@ var Data=function(){
               this.player=1-this.player;
             }else{
                 if(this.drawCheck()){
+                    document.querySelector("#draw").innerHTML="Game Draw!";
                     alert("Draw!");
                     this.restart();
 
@@ -79,6 +82,7 @@ var Data=function(){
 var UI_Update=function(data=Data){
   return({
     updateUI(){
+      document.querySelector("#player").innerHTML="Player "+data.player;
       for(i=0;i<9;i++){
         document.querySelector("#peg"+i).innerHTML = data.board[i];
       }
